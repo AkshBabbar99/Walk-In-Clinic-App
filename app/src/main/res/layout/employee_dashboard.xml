@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="androidx.navigation.Navigation" />
+
+        <import type="io.github.professor_forward.teampineapple.walkinclinic.employee.EmployeeDashboardDirections" />
+
+        <import type="io.github.professor_forward.teampineapple.walkinclinic.employee.EmployeeViewModel" />
+
+        <variable
+            name="vm"
+            type="EmployeeViewModel"
+            />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".employee.EmployeeDashboard"
+        >
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/employee_name(vm.username)}"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/role"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/role"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/you_are_employee_role"
+            app:layout_constraintBottom_toTopOf="@+id/actions"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name"
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/actions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/role"
+            >
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/prompt1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/prompt2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                >
+
+                <TextView
+                    android:id="@+id/worksFor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{@string/employee_works_for(vm.clinicName)}"
+                    android:visibility="@{vm.clinicName != null ? View.VISIBLE : View.GONE}"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/setupProfile"
+                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:onClick="@{(view) -> Navigation.findNavController(view).navigate(EmployeeDashboardDirections.editProfile())}"
+                    android:text="@string/action_employee_setup_profile"
+                    android:visibility="@{vm.clinicName == null ? View.VISIBLE : View.GONE}"
+                    />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/prompt2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/prompt3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/prompt1"
+                >
+
+                <TextView
+                    android:id="@+id/services"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{@string/employee_clinic_offers_service_count(vm.serviceCount)}"
+                    android:visibility="@{vm.clinicName != null &amp;&amp; vm.serviceCount &gt; 0 ? View.VISIBLE : View.GONE}"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/setupHours"
+                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/action_employee_setup_services"
+                    android:visibility="@{vm.clinicName != null &amp;&amp; vm.serviceCount &lt; 1 ? View.VISIBLE : View.GONE}"
+                    android:onClick="@{(view) -> Navigation.findNavController(view).navigate(EmployeeDashboardDirections.addServices())}"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/prompt3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="32dp"
+                android:paddingRight="32dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/prompt2"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/your_hours"
+                    android:visibility="@{vm.clinicName != null ? View.VISIBLE : View.GONE}"
+                    />
+
+                <FrameLayout
+                    android:id="@+id/hours"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{vm.clinicName != null ? View.VISIBLE : View.GONE}"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

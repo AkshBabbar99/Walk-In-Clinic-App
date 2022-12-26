@@ -1,0 +1,82 @@
+class User {
+  id;
+  username;
+  email;
+  hashedPassword;
+  roleId;
+  
+  1 -> 1 UserRole role;
+}
+
+class UserRole {
+  abstract String getUserId();
+}
+
+class AdminRole {
+  isA UserRole;
+  String getUserId() { return "admin"; }
+}
+
+class EmployeeRole {
+  isA UserRole;
+  String getUserId() { return "employee"; }
+}
+
+class PatientRole {
+  isA UserRole;
+  String getUserId() { return "patient"; }
+}
+
+class Clinic {
+  id;
+  name;
+  address;
+  phoneNumber;
+  acceptedInsuranceTypes;
+  acceptedPaymentTypes;
+  int numStaff;
+  int numNurses;
+  int numDoctors;
+  int rating;
+  
+  0..1 -- * EmployeeRole employees;
+  1 -- * ClinicHours hours;
+  * -- * ClinicService services;
+}
+
+class ClinicHours {
+  id;
+  clinicId;
+  DayOfWeek dayOfWeek;
+  Time startTime;
+  Time endTime;
+}
+ 
+class ClinicService {
+  id;
+  name;
+  ClinicEmployeeRole role;
+}
+
+class Rating {
+  id;
+  clinicId;
+  patientId;
+  comment;
+  int value;
+  
+  * -- 1 Clinic;
+  * -- 1 PatientRole patient;
+}
+
+class Booking {
+  id;
+  clinicId;
+  patientId;
+  BookingState state;
+  Date date;
+  Date createdAt;
+  
+  * -- 1 Clinic;
+  * -- 1 PatientRole patient;
+}

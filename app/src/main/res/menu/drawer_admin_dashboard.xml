@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/adminDashboard"
+        android:title="@string/home"
+        android:icon="@drawable/ic_home_black_24dp"
+        />
+    <item
+        android:id="@+id/adminUsers"
+        android:title="@string/users"
+        android:icon="@drawable/ic_people_black_24dp"
+        />
+    <item
+        android:id="@+id/adminServices"
+        android:title="@string/services"
+        android:icon="@drawable/ic_room_service_black_24dp"
+        />
+</menu>

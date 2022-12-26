@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="filterByName">Filter By Name</string>
+    <string name="filterByHours">Filter By Hours</string>
+    <string name="filterByAddress">Filter By Address</string>
+    <string name="filterByRating">Filter By Rating</string>
+    <string name="filterByService">Filter By Service</string>
+    <string name="search">Search</string>
+    <string name="clinics">Clinics</string>
+    <string name="invalid_time">Please enter a time between 00:00 and 23:59</string>
+</resources>

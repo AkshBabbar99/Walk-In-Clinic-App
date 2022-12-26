@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WalkInClinic</string>
+    <string name="title_login">Log In</string>
+    <string name="title_register">Register</string>
+    <string name="title_logging_in">Logging In…</string>
+    <string name="title_logging_out">Logging Out…</string>
+    <string name="title_admin">Admin Dashboard</string>
+    <string name="title_employee">Employee Dashboard</string>
+    <string name="title_patient">Patient Dashboard</string>
+    <string name="nav_header_title">Walk-in Clinic</string>
+    <string name="nav_header_subtitle">Team Pineapple</string>
+    <string name="drawer_open">Drawer Open</string>
+    <string name="drawer_close">Drawer Closed</string>
+    <string name="title_add_service">Add Service</string>
+    <string name="title_edit_service">Edit Service</string>
+</resources>

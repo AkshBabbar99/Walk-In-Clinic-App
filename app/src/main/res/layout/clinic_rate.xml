@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".patient.ClinicRate"
+    >
+
+    <data>
+        <import type="android.view.View" />
+        <import type="io.github.professor_forward.teampineapple.walkinclinic.patient.ClinicRateViewModel" />
+        <import type="io.github.professor_forward.teampineapple.walkinclinic.repo.RatingRepo" />
+        <variable name="vm" type="ClinicRateViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:id="@+id/welcomeText"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="96dp"
+            android:layout_width="wrap_content"
+            android:text="@string/review"
+            android:visibility="@{vm.busy ? View.GONE : View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/ratingBar"/>
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:max="5"
+            android:numStars="5"
+            android:rating="@={vm.rating}"
+            android:stepSize="1.0"
+            app:layout_constraintBottom_toTopOf="@id/remarkField"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/welcomeText"
+            android:visibility="@{vm.busy ? View.GONE : View.VISIBLE }"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/remarkField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:hint="@string/comments"
+            android:visibility="@{vm.busy ? View.GONE : View.VISIBLE }"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/edit"
+            app:layout_constraintTop_toBottomOf="@id/ratingBar"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:text="@={vm.comments.input}"
+                error="@{vm.comments.output}"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginBottom="16dp"
+            android:enabled="@{vm.valid}"
+            android:onClick="@{(view)-> vm.onActionClick(view)}"
+            android:text="@string/save"
+            android:visibility="@{vm.busy ? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/remarkField"
+            app:layout_constraintVertical_bias="0.2"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

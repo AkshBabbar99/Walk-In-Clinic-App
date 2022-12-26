@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/employeeDashboard"
+        android:title="@string/home"
+        android:icon="@drawable/ic_home_black_24dp"
+        />
+    <item
+        android:id="@+id/employeeClinicEdit"
+        android:title="@string/profile"
+        android:icon="@drawable/ic_people_black_24dp"
+        />
+    <item
+        android:id="@+id/employeeClinicServices"
+        android:title="@string/services"
+        android:icon="@drawable/ic_room_service_black_24dp"
+        />
+    <item
+        android:id="@+id/employeeSchedule"
+        android:title="@string/schedule"
+        android:icon="@drawable/ic_schedule_black_24dp"
+        />
+</menu>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+        <import type="io.github.professor_forward.teampineapple.walkinclinic.patient.PatientClinicSearchViewModel" />
+        <import type ="androidx.navigation.Navigation"/>
+        <import type ="android.view.View"/>
+        <variable name="vm" type="PatientClinicSearchViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:hint="@string/filterByName"
+                android:id="@+id/filterByName"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:inputType="text"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:selectAllOnFocus="true"
+                    android:text="@={vm.filterName}"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:hint="@string/filterByService"
+                android:id="@+id/filterByService"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:inputType="text"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:selectAllOnFocus="true"
+                    android:text="@={vm.filterService}"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:hint="@string/filterByHours"
+                android:id="@+id/filterByHours"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:inputType="text"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:selectAllOnFocus="true"
+                    android:text="@={vm.filterHours.input}"
+                    app:error="@{vm.filterHours.output}"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--
+            <com.google.android.material.textfield.TextInputLayout
+                android:hint="@string/filterByRating"
+                android:id="@+id/filterByRating"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:inputType="text"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:selectAllOnFocus="true"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:hint="@string/filterByAddress"
+                android:id="@+id/filterByAddress"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:inputType="text"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:selectAllOnFocus="true"
+                    android:text="@={vm.filterAddress}"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/patientClinicServiceList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="LinearLayoutManager"
+                tools:context=".patient.PatientClinicSearch"
+                tools:listitem="@layout/patient_clinic_list_item"
+                />
+        </LinearLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
+

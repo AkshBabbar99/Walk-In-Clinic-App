@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".employee.EmployeeClinicHoursDialog"
+    >
+    <data>
+        <import type="android.view.View" />
+        <import type="io.github.professor_forward.teampineapple.walkinclinic.employee.EmployeeClinicHoursDialogViewModel" />
+        <variable name="vm" type="EmployeeClinicHoursDialogViewModel" />
+    </data>
+    <ScrollView
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{vm.isOpen ? View.VISIBLE : View.GONE}"
+                />
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="@{vm.isOpen ? View.VISIBLE : View.GONE}"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/start_end_time_error"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/error"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:visibility="@{vm.valid ? View.GONE : View.VISIBLE}"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:orientation="horizontal"
+                >
+                <Switch
+                    android:id="@+id/switch1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/service"
+                    android:checked="@={vm.isOpen}"
+                    />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    />
+                <Button
+                    android:id="@+id/cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cancel"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    />
+                <Button
+                    android:id="@+id/ok"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ok"
+                    android:enabled="@{vm.valid}"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</layout>

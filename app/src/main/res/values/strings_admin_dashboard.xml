@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="admin_name">Welcome, %1$s!</string>
+    <string name="error_cant_delete_admin_user">You can\'t delete yourself!</string>
+    <string name="prompt_confirm_delete_few_clinic_services">Really delete %1$s?</string>
+    <string name="prompt_confirm_delete_few_users">Really delete %1$s?</string>
+    <string name="prompt_confirm_delete_many_clinic_services">Really delete %1$d services?</string>
+    <string name="prompt_confirm_delete_many_users">Really delete %1$d users?</string>
+    <string name="services">Services</string>
+    <string name="title_users">Users</string>
+    <string name="you_are_admin_role">You are logged in as an admin.</string>
+    <string name="users">Users</string>
+    <plurals name="clinic_services_deleted">
+        <item quantity="one">Deleted one service.</item>
+        <item quantity="other">Deleted %1$d services.</item>
+    </plurals>
+    <plurals name="users_deleted">
+        <item quantity="one">Deleted one user.</item>
+        <item quantity="other">Deleted %1$d users.</item>
+    </plurals>
+    <string name="prompt_service_role"> Who performs this service?</string>
+    <string name ="form_service_name"> Name</string>
+    <string name ="staff_role">Staff</string>
+    <string name ="nurse_role">Nurse</string>
+    <string name ="doctor_role">Doctor</string>
+    <string name ="action_edit">Edit </string>
+    <string name ="action_add">Add</string>
+    <string name ="edit_service_failed_same_name"> A service with that name already exists!</string>
+    <string name ="service_edited">Service Edited</string>
+    <string name ="edit_service_failed"> An error occurred with the service</string>
+    <string name ="added_service"> Successfully added a service</string>
+</resources>
