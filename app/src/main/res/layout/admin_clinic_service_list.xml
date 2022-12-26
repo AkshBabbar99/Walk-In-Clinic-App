@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+        <import type="io.github.professor_forward.teampineapple.walkinclinic.admin.AdminClinicServicesViewModel" />
+        <import type ="androidx.navigation.Navigation"/>
+        <import type ="android.view.View"/>
+        <import type="io.github.professor_forward.teampineapple.walkinclinic.admin.AdminClinicServicesDirections" />
+        <variable name="vm" type="AdminClinicServicesViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textFilter|text"
+                android:hint="@android:string/search_go"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:text="@={vm.searchText}"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/adminClinicServiceList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="LinearLayoutManager"
+                tools:context=".admin.AdminClinicServices"
+                tools:listitem="@layout/user"
+                />
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:src="@drawable/ic_add_white_48dp"
+            android:contentDescription="@string/add_service"
+            android:onClick="@{(view) -> vm.addService(view)}"
+            android:layout_margin="16dp" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
+

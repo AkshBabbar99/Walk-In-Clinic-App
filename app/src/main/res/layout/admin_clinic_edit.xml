@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".admin.AdminClinicEdit">
+
+    <data>
+        <import type="android.view.View" />
+        <import type="io.github.professor_forward.teampineapple.walkinclinic.admin.AdminClinicEditViewModel" />
+        <import type="io.github.professor_forward.teampineapple.walkinclinic.repo.ClinicEmployeeRole" />
+        <variable name="vm" type="AdminClinicEditViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:hint="@string/form_service_name"
+            android:id="@+id/nameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="96dp"
+            android:visibility="@{vm.busy ? View.GONE : View.VISIBLE }"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="@={vm.name.input}"
+                app:error="@{vm.name.output}"
+                />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/selectServiceRoleTitle"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_width="wrap_content"
+            android:text="@string/prompt_service_role"
+            android:visibility="@{vm.busy ? View.GONE : View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nameLayout"/>
+
+        <RadioGroup
+            android:id="@+id/selectRole"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:visibility="@{vm.busy ? View.GONE : View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/selectServiceRoleTitle">
+
+            <RadioButton
+                android:checked="@{vm.role.input.getValue() == ClinicEmployeeRole.STAFF}"
+                android:id="@+id/radioStaff"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:onClick="@{() -> vm.setRole(ClinicEmployeeRole.STAFF)}"
+                android:text="@string/staff_role" />
+
+            <RadioButton
+                android:checked="@{vm.role.input.getValue() == ClinicEmployeeRole.NURSE}"
+                android:id="@+id/radioNurse"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:onClick="@{() -> vm.setRole(ClinicEmployeeRole.NURSE)}"
+                android:text="@string/nurse_role" />
+
+            <RadioButton
+                android:checked="@{vm.role.input.getValue() == ClinicEmployeeRole.DOCTOR}"
+                android:id="@+id/radioDoctor"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:onClick="@{() -> vm.setRole(ClinicEmployeeRole.DOCTOR)}"
+                android:text="@string/doctor_role" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginBottom="64dp"
+            android:enabled="@{vm.valid}"
+            android:onClick="@{(view)-> vm.onActionClick(view)}"
+            android:text="@{vm.getButtonString()}"
+            android:visibility="@{vm.busy ? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/selectRole"
+            app:layout_constraintVertical_bias="0.2"
+            />
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="64dp"
+            android:visibility="@{vm.busy ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

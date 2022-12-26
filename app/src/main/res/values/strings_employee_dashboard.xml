@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="edit_clinic">Edit Clinic</string>
+    <string name="error_clinic_same_name">A Clinic already has this name</string>
+    <string name="error_saving_clinic">An error occurred while saving your profile</string>
+    <string name="employee_clinic_offers_service_count">Your clinic offers %1$d services.</string>
+    <string name="form_num_doctors"> Number of Doctors</string>
+    <string name="form_num_nurse"> Number of Nurses</string>
+    <string name="form_num_staff"> Number of Staff</string>
+    <string name="saved_clinic">Saved clinic</string>
+    <string name="workingHours">Working Hours</string>
+    <string name="schedule">Schedule</string>
+    <string name="title_edit_profile">Edit Profile</string>
+    <string name="your_hours">Your hours:</string>
+    <string name="start_end_time_error">End Time must be after Start Time</string>
+    <plurals name="clinic_services_added">
+        <item quantity="one">Added one service.</item>
+        <item quantity="other">Added %1$d services.</item>
+    </plurals>
+</resources>

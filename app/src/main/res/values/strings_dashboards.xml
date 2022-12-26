@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="delete">Delete</string>
+    <string name="home">Home</string>
+    <string name="employee_name">Welcome, %1$s!</string>
+    <string name="patient_name">Welcome, %1$s!</string>
+    <string name="you_are_employee_role">You are logged in as an employee.</string>
+    <string name="you_are_patient_role">You are logged in as a patient.</string>
+    <string name="employee_works_for">You work for the clinic %1$s.</string>
+    <string name="action_employee_setup_profile">Setup your clinic\'s profile</string>
+    <string name="action_employee_setup_services">Add some services to your profile</string>
+</resources>
